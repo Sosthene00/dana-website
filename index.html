@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dana Wallet</title>
+  <style>
+    body {
+      background: #fff;
+      color: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 2em;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
+    a {
+      color: #00f;
+      text-decoration: underline;
+    }
+    .button-row {
+      display: flex;
+      gap: 1em; /* spacing between buttons */
+      flex-wrap: wrap; /* optional: wrap on smaller screens */
+      align-items: flex-start;
+    }    
+    a.button {
+      padding: 0.5em 1em;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dana Wallet</h1>
+  <img src="./dana_outline.png" alt="Dana Wallet logo" style="display: block; margin: 0 auto 1em; max-width: 50%; height: auto;">
+
+
+  <h2>Send bitcoin to the people you love, anytime, anywhere</h2>
+  <ul>
+	  <li>Bitcoin is your money: send and receive as you like, don't ask permission</li>
+	  <li>Post once, receive forever: addresses can be reused without ruining your privacy</li>
+	  <li>Organize your money into accounts, your contacts as an address book</li>
+  </ul>
+  <h3>How does it work?</h3>
+  <ul>
+	  <li><a href="https://silentpayments.xyz/">Silent Payment</a> is a new protocol for payment codes that make address reuse impossible and improve bitcoin user experience</li>
+	  <li>Powered by privacy preserving <a href="https://github.com/setavenger/blindbit-oracle.git">Blindbit oracle</a> backend: use a public instance or bootstrap your own</li>
+  </ul>
+  <h3>Wanna try?</h3>
+  <p>Dana is still under development and at an early stage. Available package on fdroid is using a test network, not real bitcoin. Any feedback or contribution is warmly welcomed. You can build it for yourself if you know what you are doing and want to try mainnet</p>
+  <p>Contact us on nostr, keep an eye there for updates!</p>
+  
+  <div class="button-row">
+    <a class="button" href="https://fdroid.silentpayments.dev/fdroid/repo/">View on F-Droid</a>
+    <a class="button" href="https://github.com/cygnet3/danawallet">GitHub Repository</a>
+    <a class="button" href="https://njump.me/npub17vjlv6u4dg2ypyy5je9zc3lpeyfrnfrpmzgwt8v4rc289p2m79cqepwz5q">Nostr</a>
+  </div?>
+
+  <footer>
+    <p>No tracking. No cookies.</p>
+  </footer>
+</body>
+</html>
+
