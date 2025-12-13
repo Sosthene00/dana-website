@@ -10,8 +10,15 @@
       color: #000;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       padding: 2em;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Dark theme styles */
+    body.dark-theme {
+      background: #1a1a1a;
+      color: #ffffff;
     }
     h1 {
       font-size: 2.5em;
@@ -21,6 +28,19 @@
     a {
       color: #00f;
       text-decoration: underline;
+    }
+    
+    a:visited {
+      color: #00f;
+    }
+    
+    /* Dark theme link color for better contrast */
+    .dark-theme a {
+      color: #66b3ff;
+    }
+    
+    .dark-theme a:visited {
+      color: #66b3ff;
     }
     .button-row {
       display: flex;
@@ -35,16 +55,75 @@
       text-decoration: none;
       font-weight: bold;
     }
+    
+    .dark-theme a.button {
+      background: #fff;
+      color: #000;
+    }
 
     footer {
       margin-top: 3em;
       font-size: 0.9em;
     }
+    
+    .logo {
+      margin: 0 auto 1em;
+      max-width: 50%;
+      height: auto;
+    }
+    
+    /* Default: show light logo, hide dark logo */
+    .logo-light {
+      display: block;
+    }
+    
+    .logo-dark {
+      display: none;
+    }
+    
+    /* When dark theme is active */
+    .dark-theme .logo-light {
+      display: none;
+    }
+    
+    .dark-theme .logo-dark {
+      display: block;
+    }
+    
+    /* Theme toggle button */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      background: #333;
+    }
+    
+    .dark-theme .theme-toggle {
+      background: #fff;
+      color: #000;
+    }
+    
+    .dark-theme .theme-toggle:hover {
+      background: #f0f0f0;
+    }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   <h1>Dana Wallet</h1>
-  <img src="./dana_outline.png" alt="Dana Wallet logo" style="display: block; margin: 0 auto 1em; max-width: 50%; height: auto;">
+  <img src="./dana_black.webp" alt="Dana Wallet logo black" class="logo logo-light">
+  <img src="./dana_white.webp" alt="Dana Wallet logo white" class="logo logo-dark">
 
 
   <h2>Send bitcoin to the people you love, anytime, anywhere</h2>
@@ -67,11 +146,31 @@
     <a class="button" href="https://fdroid.danawallet.app/fdroid/repo/">View on F-Droid</a>
     <a class="button" href="https://github.com/cygnet3/danawallet">GitHub Repository</a>
     <a class="button" href="https://njump.me/npub17vjlv6u4dg2ypyy5je9zc3lpeyfrnfrpmzgwt8v4rc289p2m79cqepwz5q">Nostr</a>
-  </div?>
+  </div>
 
   <footer>
     <p>No tracking. No cookies.</p>
   </footer>
+
+  <script>
+    // Simple theme toggle
+    function toggleTheme() {
+      const body = document.body;
+      const isDark = body.classList.contains('dark-theme');
+      const button = document.querySelector('.theme-toggle');
+      
+      if (isDark) {
+        body.classList.remove('dark-theme');
+        button.textContent = '🌙';
+      } else {
+        body.classList.add('dark-theme');
+        button.textContent = '☀️';
+      }
+    }
+    
+    // Initialize theme on page load - always start with light theme
+    document.querySelector('.theme-toggle').textContent = '🌙';
+  </script>
 </body>
 </html>
 
