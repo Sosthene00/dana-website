@@ -42,24 +42,45 @@
     .dark-theme a:visited {
       color: #66b3ff;
     }
-    .button-row {
+    .icon-row {
       display: flex;
-      gap: 1em; /* spacing between buttons */
-      flex-wrap: wrap; /* optional: wrap on smaller screens */
-      align-items: flex-start;
+      gap: 1.25em;
+      flex-wrap: wrap;
+      align-items: center;
       margin-bottom: 0.5em;
-    }    
-    a.button {
-      padding: 0.5em 1em;
-      background: #000;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
     }
-    
-    .dark-theme a.button {
-      background: #fff;
+
+    a.icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
       color: #000;
+      text-decoration: none;
+      opacity: 0.9;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    a.icon-link:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    a.icon-link img,
+    a.icon-link svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .dark-theme a.icon-link {
+      color: #fff;
+    }
+
+    .dark-theme a.icon-link img {
+      filter: invert(1);
     }
 
     footer {
@@ -188,17 +209,27 @@
   <p>Dana is still under development and at an early stage. To try it out, you can download the APK from the releases page on our GitHub repository linked below. Any feedback or contribution is warmly welcomed. You can also build it yourself if you want to help development.</p>
   <p>Contact us on nostr, keep an eye there for updates!</p>
   
-  <div class="button-row">
-    <a class="button" href="https://fdroid.danawallet.app/fdroid/repo/">View on F-Droid</a>
-    <a class="button" href="https://zapstore.dev/apps/dev.silentpayments.danawallet">View on Zapstore</a>
-    <a class="button" href="https://github.com/cygnet3/danawallet">GitHub Repository</a>
+  <div class="icon-row">
+    <a class="icon-link" href="https://fdroid.danawallet.app/fdroid/repo/" title="F-Droid" aria-label="View on F-Droid">
+      <img src="./icons/fdroid.svg" alt="F-Droid">
+    </a>
+    <a class="icon-link" href="https://zapstore.dev/apps/dev.silentpayments.danawallet" title="Zapstore" aria-label="View on Zapstore">
+      <img src="./icons/zapstore.svg" alt="Zapstore">
+    </a>
+    <a class="icon-link" href="https://github.com/cygnet3/danawallet" title="GitHub" aria-label="GitHub repository">
+      <img src="./icons/github.svg" alt="GitHub">
+    </a>
   </div>
 
   <h3>Get in touch</h3>
   <p>Contact us and keep an eye out for updates.</p>
-  <div class="button-row">
-    <a class="button" href="https://njump.me/npub17vjlv6u4dg2ypyy5je9zc3lpeyfrnfrpmzgwt8v4rc289p2m79cqepwz5q">Nostr</a>
-    <a class="button" href="https://x.com/danawalletbtc">X</a>
+  <div class="icon-row">
+    <a class="icon-link" href="https://njump.me/npub17vjlv6u4dg2ypyy5je9zc3lpeyfrnfrpmzgwt8v4rc289p2m79cqepwz5q" title="Nostr" aria-label="Nostr">
+      <img src="./icons/nostr.svg" alt="Nostr">
+    </a>
+    <a class="icon-link" href="https://x.com/danawalletbtc" title="X" aria-label="X">
+      <img src="./icons/x.svg" alt="X">
+    </a>
   </div>
 
   <footer>
