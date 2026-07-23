@@ -5,21 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dana Wallet</title>
   <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
+      min-height: 100vh;
       background: #fff;
       color: #000;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      padding: 2em;
-      max-width: 700px;
-      margin: auto;
       transition: background-color 0.3s ease, color 0.3s ease;
+      /* Soft center focus so ultrawide side margins don't feel empty */
+      background-image: radial-gradient(
+        ellipse 700px 80% at 50% 0%,
+        #f5f5f5 0%,
+        #fff 70%
+      );
     }
-    
+
     /* Dark theme styles */
     body.dark-theme {
-      background: #1a1a1a;
+      background-color: #1a1a1a;
       color: #ffffff;
+      background-image: radial-gradient(
+        ellipse 700px 80% at 50% 0%,
+        #242424 0%,
+        #1a1a1a 70%
+      );
     }
+
+    .page {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2em;
+    }
+
     h1 {
       font-size: 2.5em;
       margin-bottom: 0.5em;
@@ -29,16 +53,16 @@
       color: #00f;
       text-decoration: underline;
     }
-    
+
     a:visited {
       color: #00f;
     }
-    
+
     /* Dark theme link color for better contrast */
     .dark-theme a {
       color: #66b3ff;
     }
-    
+
     .dark-theme a:visited {
       color: #66b3ff;
     }
@@ -87,36 +111,38 @@
       margin-top: 3em;
       font-size: 0.9em;
     }
-    
+
     .logo {
       margin: 0 auto 1em;
       max-width: 50%;
       height: auto;
+      display: block;
     }
-    
+
     /* Default: show light logo, hide dark logo */
     .logo-light {
       display: block;
     }
-    
+
     .logo-dark {
       display: none;
     }
-    
+
     /* When dark theme is active */
     .dark-theme .logo-light {
       display: none;
     }
-    
+
     .dark-theme .logo-dark {
       display: block;
     }
-    
-    /* Theme toggle button */
+
+    /* Theme toggle: stay near the content column on ultrawide */
     .theme-toggle {
       position: fixed;
       top: 20px;
-      right: 20px;
+      right: max(20px, calc(50% - 350px + 20px));
+      z-index: 1;
       background: #000;
       color: #fff;
       border: none;
@@ -126,16 +152,16 @@
       font-size: 14px;
       transition: all 0.3s ease;
     }
-    
+
     .theme-toggle:hover {
       background: #333;
     }
-    
+
     .dark-theme .theme-toggle {
       background: #fff;
       color: #000;
     }
-    
+
     .dark-theme .theme-toggle:hover {
       background: #f0f0f0;
     }
@@ -170,17 +196,37 @@
       font-size: 0.9em;
       line-height: 1.3;
     }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 1.25em 1em;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .logo {
+        max-width: min(60%, 200px);
+      }
+
+      .theme-toggle {
+        top: 12px;
+        right: 12px;
+      }
+    }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-  <h1>Dana Wallet</h1>
-  <img src="./dana_black.webp" alt="Dana Wallet logo black" class="logo logo-light">
-  <img src="./dana_white.webp" alt="Dana Wallet logo white" class="logo logo-dark">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+  <main class="page">
+    <h1>Dana Wallet</h1>
+    <img src="./dana_black.webp" alt="Dana Wallet logo black" class="logo logo-light">
+    <img src="./dana_white.webp" alt="Dana Wallet logo white" class="logo logo-dark">
 
 
-  <h2>Send bitcoin to the people you love, anytime, anywhere</h2>
-  <ul>
+    <h2>Send bitcoin to the people you love, anytime, anywhere</h2>
+    <ul>
 	  <li>Bitcoin is your money: send and receive as you like, don't ask permission</li>
 	  <li>Claim your Dana address, an email-like address that everyone can use to send you money</li>
 	  <li>Organize your contacts book, sending money is always 2 taps away</li>
@@ -242,7 +288,7 @@
       const body = document.body;
       const isDark = body.classList.contains('dark-theme');
       const button = document.querySelector('.theme-toggle');
-      
+
       if (isDark) {
         body.classList.remove('dark-theme');
         button.textContent = '🌙';
@@ -251,10 +297,9 @@
         button.textContent = '☀️';
       }
     }
-    
+
     // Initialize theme on page load - always start with light theme
     document.querySelector('.theme-toggle').textContent = '🌙';
   </script>
 </body>
 </html>
-
